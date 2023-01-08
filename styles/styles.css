@@ -379,6 +379,7 @@ a:hover{
 
 .topnav>a{
     color: black;
+    height: 20px;
     padding: 30px 40px;
     text-decoration: none;
     font-size: 17px;
