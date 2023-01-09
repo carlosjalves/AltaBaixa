@@ -1,11 +1,10 @@
 function reveal() {
-    var reveals = document.querySelectorAll(".reveal");
-    //var reveals1 = document.querySelectorAll(".reveal1");
+    let reveals = document.querySelectorAll(".reveal");
 
-    for (var i = 0; i < reveals.length; i++) {
-        var windowHeight = window.innerHeight;
-        var elementTop = reveals[i].getBoundingClientRect().top;
-        var elementVisible = 500;
+    for (let i = 0; i < reveals.length; i++) {
+        let windowHeight = window.innerHeight;
+        let elementTop = reveals[i].getBoundingClientRect().top;
+        let elementVisible = 500;
 
         if (elementTop < windowHeight - elementVisible) {
             reveals[i].classList.add("active");
@@ -55,14 +54,12 @@ function reveal() {
 }*/
 
 function reveal_img() {
-    var reveals = document.querySelectorAll(".revealimg");
-    var text = document.getElementById("article")
+    let reveals = document.querySelectorAll(".revealimg");
+    let text = document.getElementById("article")
 
-    for (var i = 0; i < reveals.length; i++) {
-        var windowHeight = window.innerHeight;
-        var elementTop = text.getBoundingClientRect().bottom;
-        var imageBottom = reveals[i].getBoundingClientRect().bottom
-        var elementVisible = 100;
+    for (let i = 0; i < reveals.length; i++) {
+        let elementTop = text.getBoundingClientRect().bottom;
+        let imageBottom = reveals[i].getBoundingClientRect().bottom
 
         if (elementTop < imageBottom){
             reveals[i].classList.remove("revealimg");
@@ -90,12 +87,41 @@ function myFunction() {
 }
 
 
+function hideStamps() {
+    let x = document.getElementById("hide-stamps")
+    let y = document.getElementsByClassName("stamps-background")[0]
+    let z = document.getElementById("Stamps")
+
+    if (z.style.top === (window.innerHeight - 50)+"px"){
+        z.style.top = window.innerHeight+"px"
+        y.style.bottom = "-70px"
+        x.style.bottom = "30px"
+        x.style.width = "30px"
+        x.style.height = "30px"
+        x.style.fontSize = "15px"
+        x.style.borderWidth = "2.9px"
+        x.style.transform = "rotate(180deg)"
+    } else {
+        z.style.top = (window.innerHeight-50)+"px"
+        y.style.bottom = "0";
+        x.style.bottom = "60px"
+        x.style.width = "25px"
+        x.style.height = "25px"
+        x.style.fontSize = "11px"
+        x.style.borderWidth = "2.8px"
+        x.style.transform = "rotate(0deg)"
+    }
+}
+
+
 //P5.js
 
 let img = [];
 let canvas;
 let x;
 let imgz;
+let stampsBg = document.getElementsByClassName("stamps-background")[0];
+let pageY;
 
 let s1 = function( sketch ) {
     sketch.windowResized = function () {
@@ -110,7 +136,7 @@ let s1 = function( sketch ) {
 
         let div = sketch.createDiv();
         div.id("Stamps")
-        div.position('50%', sketch.windowHeight-50, 'fixed')
+        div.position('50%', sketch.windowHeight, 'fixed')
         div.style('transform', 'translate(-540px, 0)')
 
         for(let i = 0; i <= 26; i++){
@@ -133,6 +159,7 @@ let s1 = function( sketch ) {
             img[i].id(""+i+"");
             img[i].size(40,40);
         }
+        pageY = (stampsBg.getBoundingClientRect().top + window.pageYOffset)-70;
     }
 
     sketch.clicked = function () {
@@ -159,13 +186,20 @@ let s1 = function( sketch ) {
     }
 
     sketch.draw = function () {
+        console.log(pageY,sketch.mouseY)
         if(imgz !== undefined){
-            if (sketch.mouseIsPressed && sketch.mouseY<sketch.windowHeight-50) {
+            if (sketch.mouseIsPressed && sketch.mouseY<pageY) {
                 sketch.image(imgz, sketch.mouseX, sketch.mouseY, 100,100);
             }
         }
     }
+
+    sketch.mouseWheel = function () {
+        pageY = stampsBg.getBoundingClientRect().top + window.pageYOffset;
+    }
 };
+
+
 
 new p5(s1);
 
@@ -199,13 +233,13 @@ let s2 = function( sketch ) {
     }
 
     sketch.mouseWheel = function (event) {
+        if (document.body.getBoundingClientRect().top === 0){
+            posb = 0;
+            posA = -200;
+        }
         posb += event.delta/100;
         posA += event.delta/100;
     }
-
-    /*sketch.mousePressed = function () {
-        window.location = "index.html";
-    }*/
 }
 
 new p5(s2);
