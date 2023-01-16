@@ -17,41 +17,8 @@ function reveal() {
         } else {
             reveals[i].classList.remove("out");
         }
-
-        /*var elementTop1 = reveals1[i].getBoundingClientRect().bottom;
-
-        if (elementTop1 < windowHeight/2) {
-            reveals1[i].classList.add("out");
-        } else {
-            reveals1[i].classList.remove("out");
-        }*/
     }
 }
-
-/*function revealArticle2() {
-    var reveals = document.querySelectorAll(".reveal2");
-
-    for (var i = 0; i < reveals.length; i++) {
-        var text = document.getElementById("article2-"+(i+1)+"")
-
-        var windowHeight = window.innerHeight;
-        var elementTop = text.getBoundingClientRect().top;
-        var elementBottom = text.getBoundingClientRect().bottom;
-        var elementVisible = 700;
-
-        if (elementTop < windowHeight - elementVisible) {
-            reveals[i].classList.add("active");
-        } else {
-            reveals[i].classList.remove("active");
-        }
-
-        if (elementBottom < windowHeight - 150) {
-            reveals[i].classList.add("out");
-        } else {
-            reveals[i].classList.remove("out");
-        }
-    }
-}*/
 
 function reveal_img() {
     let reveals = document.querySelectorAll(".revealimg");
@@ -73,8 +40,6 @@ function reveal_img() {
 
 window.addEventListener("scroll", reveal);
 window.addEventListener("scroll", reveal_img);
-//window.addEventListener("scroll", revealArticle2);
-
 
 function myFunction() {
     let x = document.getElementById("myLinks");
@@ -117,11 +82,8 @@ function hideStamps() {
 //P5.js
 
 let img = [];
-let canvas;
-let x;
-let imgz;
+let canvas, x, imgz, pageY;
 let stampsBg = document.getElementsByClassName("stamps-background")[0];
-let pageY;
 
 let s1 = function( sketch ) {
     sketch.windowResized = function () {
@@ -159,7 +121,7 @@ let s1 = function( sketch ) {
             img[i].id(""+i+"");
             img[i].size(40,40);
         }
-        pageY = (stampsBg.getBoundingClientRect().top + window.pageYOffset)-70;
+        pageY = (stampsBg.getBoundingClientRect().top + window.pageYOffset)-71;
     }
 
     sketch.clicked = function () {
@@ -186,7 +148,6 @@ let s1 = function( sketch ) {
     }
 
     sketch.draw = function () {
-        console.log(pageY,sketch.mouseY)
         if(imgz !== undefined){
             if (sketch.mouseIsPressed && sketch.mouseY<pageY) {
                 sketch.image(imgz, sketch.mouseX, sketch.mouseY, 100,100);
@@ -195,7 +156,11 @@ let s1 = function( sketch ) {
     }
 
     sketch.mouseWheel = function () {
-        pageY = stampsBg.getBoundingClientRect().top + window.pageYOffset;
+        if (document.body.getBoundingClientRect().top === 0){
+            pageY = stampsBg.getBoundingClientRect().top + window.pageYOffset-71;
+        }else{
+            pageY = stampsBg.getBoundingClientRect().top + window.pageYOffset;
+        }
     }
 };
 
@@ -203,11 +168,9 @@ let s1 = function( sketch ) {
 
 new p5(s1);
 
-let imgA, imgb;
+let imgA, imgb, logo;
 let posA = -200;
 let posb = 0;
-let logo;
-
 
 let s2 = function( sketch ) {
     sketch.preload = function () {

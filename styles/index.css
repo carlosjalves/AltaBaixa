@@ -40,19 +40,20 @@ body {
 
 .index-num{
     font-family: 'Xanh Mono', monospace;
-    font-size: 24px;
+    font-size: 1.68vw;
     padding-left: 25%;
 }
 
 .index-title{
     font-family: 'Xanh Mono', monospace;
-    font-size: 32px;
+    font-size: 2.3vw;
 }
 
 .index-subtitle{
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 1.26vw;
+    margin-top: 15px;
 }
 
 a{
@@ -77,7 +78,6 @@ a:hover{
         opacity: 1;
     }
 }
-
 @keyframes flickerAnimation {
     0%   { opacity:1; }
     50%  { opacity:0; }

@@ -31,9 +31,7 @@ function hideStamps() {
 //P5.js
 
 let img = [];
-let canvas;
-let x;
-let imgz;
+let canvas, x, imgz;
 
 let s2 = function( sketch ) {
     sketch.windowResized = function () {
@@ -105,8 +103,6 @@ let s2 = function( sketch ) {
         }
     }
 };
-
-
 
 
 let imgA, imgb;

@@ -6,8 +6,6 @@ body{
 }
 
 main{
-    /*position: fixed;
-    top: 0;*/
     z-index: -1;
 }
 
@@ -39,17 +37,14 @@ main{
     opacity: 0.8;
 }
 
-/* width */
 ::-webkit-scrollbar {
     width: 10px;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
     background: #e6007e;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: black;
 }
@@ -96,19 +91,20 @@ a:hover{
 
 .index-num{
     font-family: 'Xanh Mono', monospace;
-    font-size: 24px;
+    font-size: 1.68vw;
     padding-left: 25%;
 }
 
 .index-title{
     font-family: 'Xanh Mono', monospace;
-    font-size: 32px;
+    font-size: 2.3vw;
 }
 
 .index-subtitle{
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 1.26vw;
+    margin-top: 15px;
 }
 
 #article{
@@ -138,32 +134,33 @@ a:hover{
     width: 90%;
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
-    font-size: 64px;
+    font-size: 4.8vw;
     margin-bottom: 0;
+    color: #e6007e;
 }
 
 #article h3{
     font-family: 'Xanh Mono', monospace;
-    font-size: 32px;
-    color: #e6007e;
+    font-size: 2.3vw;
 }
 
 #article #sub-title1{
     font-family: 'Xanh Mono', monospace;
-    font-size: 32px;
+    font-size: 2.3vw;
     color: black;
 }
 
 #article h4{
     font-family: 'Xanh Mono', monospace;
-    font-size: 20px;
-    letter-spacing: 0.1em;
+    font-size: 1.4vw;
+    letter-spacing: 0.15em;
+    color: #e6007e;
 }
 
 #article p{
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 1.12vw;
     line-height: 1.4;
 }
 
@@ -205,29 +202,44 @@ a:hover{
 }
 
 #article2-2, #article2-4, #article2-6{
-    width: 50%;
+    display: grid;
+    grid-template-columns: 50% 50%;
     padding-top: 100px;
     grid-column-start: 2;
     grid-column-end: 3;
+    justify-self: end;
 }
 
-#article2-img1{
-    width: 60%;
+#article2-2 .article-text, #article2-4 .article-text, #article2-6 .article-text{
+    grid-column-start: 1;
+}
+
+#article2-img1, #article2-img3, #article2-img5, #article2-img7{
+    width: 26vw;
     grid-column-start: 1;
     grid-row-start: 1;
     align-self: center;
+    z-index: -1;
 }
 
+#article2-img2, #article2-img4, #article2-img6{
+    width: 26vw;
+    grid-column-start: 2;
+    grid-row-start: 1;
+    align-self: center;
+    justify-self: end;
+    z-index: -1;
+}
 
-#article2-img1 img{
+#article2-img1 img, #article2-img2 img, #article2-img3 img, #article2-img4 img, #article2-img5 img, #article2-img6 img, #article2-img7 img{
     width: 100%;
+    margin-bottom: 20px;
 }
-
 
 .article-text{
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 1.12vw;
     text-align: left;
     hyphens: auto;
     padding-top: 10px;
@@ -289,34 +301,23 @@ a:hover{
     animation: fade-out 1s ease-out;
 }
 
-/*.reveal1.out {
-    opacity: 0;
-}*/
-
 @keyframes fade {
     0% {
-        /*transform: translateY(0);*/
         opacity: 0;
     }
     100% {
-        /*transform: translateY(0);*/
         opacity: 1;
     }
 }
 
 @keyframes fade-out {
     0% {
-        /*transform: translateY(0);*/
         opacity: 1;
     }
     100% {
-        /*transform: translateY(0);*/
         opacity: 0;
     }
 }
-
-
-
 
 .topnav {
     overflow: hidden;
@@ -357,12 +358,11 @@ a:hover{
     color: white;
 }
 
-
 #myLinks p{
-    width: 273px;
+    width: 19.11vw;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 1.12vw;
     hyphens: auto;
     word-spacing: -0.05em;
     padding: 60px 40px 0 200px;
@@ -384,7 +384,7 @@ a:hover{
     height: 20px;
     padding: 30px 40px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 1.19vw;
     display: block;
 }
 
@@ -402,10 +402,6 @@ a:hover{
     padding: 0;
     z-index: 6;
 }
-
-
-
-
 
 #icon {
     background: white;
@@ -436,40 +432,31 @@ label:hover~span{
     background: #e6007e;
 }
 
-
 span:nth-of-type(1){
     width:50%;
-
 }
 
 span:nth-of-type(2){
     width:100%;
 }
 
-
 span:nth-of-type(3){
     width:75%;
-
 }
-
 
 input[type="checkbox"]{
     display:none;
 }
-
 
 input[type="checkbox"]:checked ~ span:nth-of-type(1){
     transform-origin:bottom;
     transform:rotatez(45deg) translate(2px,0px)
 }
 
-
 input[type="checkbox"]:checked ~ span:nth-of-type(2){
-
     transform-origin:top;
     transform:rotatez(-45deg)
 }
-
 
 input[type="checkbox"]:checked ~ span:nth-of-type(3){
     transform-origin:bottom;
